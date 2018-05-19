@@ -50,6 +50,12 @@ namespace client{
     //std::cout << "str.c_str: " << str.c_str() << "str.size: " << str.size() << std::endl;
     return; 
   }
+  void Print(const std::string&log)
+  {
+    FILE*fp = fopen("./log.txt","a");
+    fwrite(log.c_str(),log.size(),1,fp);
+    fclose(fp);
+  }
   void ChatClient:: RecvMsg(server::Data*data)
   {
    // printf("RecvMsg begin\n");
@@ -65,6 +71,8 @@ namespace client{
     //std::cout << sock_ << std::endl;
     //std::cout << "read_size:" << read_size << std::endl;
     buf[read_size] = '\0';
+    //在这里加上一个打印日志的情况
+    Print(buf);
     data->UnSerialize(buf);
     // std::cout << "buf:" << buf << std::endl;
     //  printf("RecvMsg finish\n");
