@@ -98,10 +98,13 @@ namespace server{
     //的效果，但是这种实现凡事比较蠢，完全可以控制客户端，不经过网络传输就可以实现这个功能，咱们此处还是用这个蠢方法，
     //更优越的方法交给之后来进行实现
     //这里的context.str相当于是一个序列化之后的字符串
+    //LOG(INFO) << "========friend_list=======\n";
     for(auto item : online_friend_list_)
     {
+      //LOG(INFO) << item.first << " " << inet_ntoa(item.second.sin_addr)<<":" << ntohs(item.second.sin_port);
       SendMsg(context.str,item.second);
     }
+    //LOG(INFO) << "===============\n";
    return 0;
   }
   void ChatServer::AddUser(sockaddr_in addr,const std::string&name)

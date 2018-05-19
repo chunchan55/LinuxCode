@@ -75,7 +75,7 @@ namespace client{
 
 
 ///先实现一个建议版本的客户端，通过这个简易版本的客户端来进行测试
-
+#ifdef TEST_CHAT_CLIENT
 #include<iostream>
 void* Send(void* arg)
 {
@@ -133,3 +133,4 @@ int main(int argc,char*argv[])
   pthread_join(rtid,NULL);
   return 0;
 }
+#endif
