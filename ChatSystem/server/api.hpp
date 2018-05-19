@@ -9,6 +9,7 @@ namespace server{
     std::string name;
     std::string school;
     std::string msg;
+  //对于当前情况下，cmd的取值要么为空字符串，要么为quit，如果为quit则标书客户端退出
     std::string cmd;
     void Serialize(std::string* output)//序列化
     {
@@ -27,6 +28,7 @@ namespace server{
     }
     void UnSerialize(const std::string& input)
     {
+      //std::cout<< "反序列化前" << input.c_str() << std::endl;
       Json::Value value;
       Json::Reader reader;
       reader.parse(input,value);
@@ -37,6 +39,7 @@ namespace server{
       school = value["school"].asString();
       msg = value["msg"].asString();
       cmd = value["cmd"].asString();
+      //std::cout<< "反序列化" << input.c_str() << std::endl;
       return;
     }
   };

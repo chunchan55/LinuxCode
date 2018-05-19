@@ -24,6 +24,7 @@ namespace server{
     }
 //    LOG(INFO) << "Server Start OK!\n";
     //创建两个线程一个从socket中读取数据，一个进行广播
+    printf("Server Start OK\n");
     pthread_t productor,consumer;
     pthread_create(&productor,NULL,Product,this);
     pthread_create(&consumer,NULL,Consume,this);
@@ -63,6 +64,7 @@ namespace server{
       perror("recvfrom");
       return -1;
     }
+    //LOG(INFO) << "[Request] " << buf << "\n"; 
     buf[read_size] = '\0';
     //2.把数据插入到BlockQueue中
     Context context;
@@ -95,6 +97,7 @@ namespace server{
     //由于发送消息的用户也存在于好友列表中，因此在遍历列表的时候也会给自己发送消息，从而达到发送者能够看到自己发送的消息
     //的效果，但是这种实现凡事比较蠢，完全可以控制客户端，不经过网络传输就可以实现这个功能，咱们此处还是用这个蠢方法，
     //更优越的方法交给之后来进行实现
+    //这里的context.str相当于是一个序列化之后的字符串
     for(auto item : online_friend_list_)
     {
       SendMsg(context.str,item.second);
@@ -124,6 +127,7 @@ namespace server{
   {
     //把这个数据通过sendto发送给客户端
     sendto(sock_,data.data(),data.size(),0,(sockaddr*)&addr,sizeof(addr));
+   // LOG(INFO) << "[Reponse] " << inet_ntoa(addr.sin_addr) << ":" << ntohs(addr.sin_port) << " " << data << "\n";
   }
 
 }//end serve
