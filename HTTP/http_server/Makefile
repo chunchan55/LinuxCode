@@ -1,5 +1,5 @@
-test:http_server_test.cc http_server.cc 
-	g++ -o $@ $^ -std=c++11
+http_server:http_server.cc http_server_main.cc
+	g++ -o $@ $^ -std=c++11 -lpthread 
 .PHONY:clean
 clean:
-	rm test
+	rm http_server

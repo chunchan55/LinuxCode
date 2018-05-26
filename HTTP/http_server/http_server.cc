@@ -1,6 +1,42 @@
 #include"http_server.h"
 #include"util.hpp"
+#include<pthread.h>
 namespace http_server{
+  void* HttpServer::ThreadEntry(void* arg)//不能直接把这个入口函数定义为类的成员函数，因为掉用类成员函数要用对象
+  {
+    //准备工作
+    Context*context = reinterpret_cast<Context*>(arg);
+    HttpServer* server = context->server;
+    //1.从文联描述符中读取数据，转换成Request对象
+    int ret = 0;
+    ret = context->server->ReadOneRequest(context);
+    if(ret < 0)
+    {
+      LOG(ERROR) << "ReadOneRequest error!" << "\n";
+      //用这个函数构造一个404 的http响应对象
+      server->Process404(context);
+      goto END;
+    }
+    //TODO test 通过以下函数将一个解析除开的请求打印出来
+    context->server->PrintRequest(context->req);
+    //2.把Request对象计算生成Response对象
+    ret = server->HandlerRequest(context);
+    if(ret < 0)
+    {
+      LOG(ERROR) << "ReadOneRequest error!" << "\n";
+      //用这个函数构造一个404 的http响应对象
+      server->Process404(context);
+      goto END;
+    }
+END:
+    //TODO  处理失败的情况
+   // 3.把Response对象进行序列化，写到客户端
+    server->WriteOneResponse(context);
+    //收尾工作
+    close(context->new_sock);
+    delete context;
+    return NULL;
+  }
   int HttpServer::Start(const std::string&ip,short port)
   {
     int listen_sock = socket(AF_INET,SOCK_STREAM,0);
@@ -9,6 +45,10 @@ namespace http_server{
       perror("socket");
       return -1;
     }
+    //要给socket加上一个选项，能够重新用我们的连接，就是那个bind状态
+    //setsocketopt() 这个函数可以给socket加上一个选项
+    int opt = 1;
+    setsockopt(listen_sock,SOL_SOCKET,SO_REUSEADDR,&opt,sizeof(opt));
     sockaddr_in addr;
     addr.sin_family = AF_INET;
     addr.sin_addr.s_addr = inet_addr(ip.c_str());
@@ -27,13 +67,204 @@ namespace http_server{
     }
     //printf("ServerStart OK!\n");
     LOG(INFO) << "ServerStart OK!\n";
-    //TODO
+    while(1)
+    {
+      //基于多线程来实现一个TCP服务器
+      sockaddr_in peer;
+      socklen_t len = sizeof(peer);
+      int new_sock = accept(listen_sock,(sockaddr*)&peer,&len);
+      if(new_sock < 0)
+      {
+        perror("accept");
+        continue;//这里不直接return，服务器在accept失败之后应该可以在次进行请求
+      }
+      //创建新线程，使用新线程完成这次请求的计算
+      Context*context = new Context();
+      context->new_sock = new_sock;
+      context->server = this;
+      pthread_t tid;
+      pthread_create(&tid,NULL,ThreadEntry,reinterpret_cast<Context*>(context));
+      pthread_detach(tid);
+    }
+    close(listen_sock);
     return 0;
   }
   //根据http请求字符串，来进行反序列化，从socket中读取一个字符串，输出Request对象
-  int ReadOneRequest(Context*context);
-  //根据Response对象，拼接成一个字符串，写回到客户端
-  int WriteOneResponse(Context*context);
+  int HttpServer:: ReadOneRequest(Context*context)
+  {
+    Request* req = &context->req;
+    //1.从socket中读取一行数据作为Request的首行，按行读取的分隔符应该就是\n \r \r\n
+    std::string first_line;
+    FileUtil::ReadLine(context->new_sock,&first_line);
+    //2.解析首行，获取到请求的method和url
+    int ret = ParseFirstLine(first_line,&req->method,&req->url);
+    if(ret < 0)
+    {
+      LOG(ERROR) << "ParseFirstLine error! first_line=" << first_line << "\n";
+      return -1;
+    }
+    //3.解析url，获取到url_pth，和query_string
+    ret = ParseUrl(req->url,&req->url_path,&req->query_string);
+    if(ret < 0)
+    {
+      LOG(ERROR) << "ParseUrl error! url=" << req->url << "\n";
+      return -1;
+    }
+    //4.循环按行读取数据，每次读取到一行数据，就进行一次header对的解析，读到空行，说明header解析完毕
+    std::string header_line;
+    while(1)
+    {
+      FileUtil::ReadLine(context->new_sock,&header_line);
+      //TODO 如果header_line是空行，就退出循环
+      if(header_line  == "")
+      {
+        break;
+      }
+      //因为ReadLine返回的header_line不包含\n等分割符，因此读到空行的时候，header_line就是空字符串
+      ret = ParseHeader(header_line,&req->header);
+      if(ret < 0) 
+      {
+        LOG(ERROR) << "ParseHeader error! header_line = " << header_line << "\n";
+        return -1;
+      }
+    }
+    //5.如果是POST请求，但是没有Content-Length字段，认为这个请求失败
+    Header::iterator it = req->header.find("Content-Length");
+    if(req->method == "POST" && it == req->header.end())
+    {
+      LOG(ERROR) << "POST Request has no Vontent-Length!\n";
+      return -1;
+    }
+    //如果是GET请求，就不用读body
+    if(req->method == "GET")
+    {
+      return 0;
+    }
+    //如果是POST请求，并且header中包含了Content-Length字段，继续获取socket，获取到body的内容
+    int content_length = atoi(it->second.c_str());
+    ret = FileUtil::ReadN(context->new_sock,content_length,&req->body);
+    if(ret < 0)
+    {
+      LOG(ERROR) << "ReadN error! content_length=" << content_length << "\n";
+      return -1;
+    }
+    return 0;
+  }
+  //实现序列化，把Response对象转换成一个string，写回到socket中
+  int HttpServer:: WriteOneResponse(Context*context)
+  {
+    Response* resp = &context->resp;
+    std::stringstream ss;
+    ss << "HTTP/1.1" << resp->code << " " <<resp->desc << "\n";
+    for(auto item : resp->header)
+    {
+      ss << item.first << ":" << item.second << "\n";
+    }
+    ss << "\n";
+    ss << resp->body;
+    //2.将序列化的结果写入到socket中
+    const std::string&str = ss.str();//获取到stringstream里面包含的string对象（使用了引用，并没有拷贝）
+    write(context->new_sock,str.c_str(),str.size());
+    return 0;
+  }
   //根据Request对象，构造Response对象
-  int HandlerRequest(Context*context);
+  int HttpServer::HandlerRequest(Context*context)
+  {
+    //TODO
+    return -1;
+  }
+  int HttpServer::Process404(Context*context)
+  {
+    Response*resp = &context->resp;
+    resp->code = 404;
+    resp->desc = "Not Found";
+    resp->body = "<head><meta http-equiv=\"content-type\""
+ 								 "content=\"text/html;charset=utf-8\">"
+								 "</head><h1>404！您的页面已经进入外太空</h1>";//html标签，代表一级标题
+    std::stringstream ss;
+    ss << resp->body.size();
+    std::string size;
+    ss >> size;
+    resp->header["Content-Length"] = size;//字符串转为数字
+    return 0;
+  }
+
+  int HttpServer::ParseFirstLine(const std::string&first_line,std::string*method,std::string*url)
+  {
+    std::vector<std::string> tokens;
+    StringUtil::Split(first_line," ",&tokens);//字符串的切分
+    if(tokens.size() != 3)
+    {
+      //首行格式不对p
+      LOG(ERROR) << "ParseFirstLine error! split error! first_line=" << first_line << "\n";
+      return -1;
+    }
+    //版本号中不包含HTTP关键字，也认为出错
+    if(tokens[2].find("HTTP") == std::string::npos)
+    {
+      //首行的格式不对，版本号中包含HTTP关键字
+      LOG(ERROR) << "ParseFirstLine error! version error! first_line=" << first_line << "\n";
+      return -1;
+    }
+    *method = tokens[0];
+    *url = tokens[1];
+    return 0;
+  }
+  //https//www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu....
+  //解析一个标准的url，其实比较复杂，核心思路是以？作为分割，从？左边来 查找url_path，从？右边来查找query_string
+  //我们此处只是实现一个简化的版本，只考虑不包含域名和协议的情况
+  //例如：/s?ie=utf-8&rsv_bp=0&rsv_idx=1&tn=baidu&wd-%e9%b2%9c%e8%8a%b1
+  //我们就单纯的以？作为分割，？左边的就是path，？右边的就是query_string
+  int HttpServer:: ParseUrl(const std::string&url,std::string*url_path,std::string*query_string)
+  {
+    size_t pos = url.find("?");
+    if(pos == std::string::npos)
+    {
+      //没找到
+      *url_path = url;
+      *query_string = "";//可能并没有query_string访问百度首页
+      return 0;
+    }
+    //找到了
+    *url_path = url.substr(0,pos);
+    *query_string = url.substr(pos+1);//第二个参数不填写，就默认到字符串的结尾
+    return 0;
+  }
+  int HttpServer::ParseHeader(const std::string&header_line,Header*header)
+  {
+    size_t pos = header_line.find(":");
+    if(pos == std::string::npos)
+    {
+      LOG(ERROR) << "ParseHeader error! has no : header_line=" << header_line << "\n";
+      return -1;
+    }
+    //这个header的格式还是不正切，没有value
+    if(pos + 2 >= header_line.size())
+    {
+      LOG(ERROR) << "ParseHeader error! has no value! header_line=" << header_line << "\n";
+      return -1;
+    }
+    (*header)[header_line.substr(0,pos)] = header_line.substr(pos+2);
+    return 0;
+  }
+
+
+/////////////////////////////////////////////////////////////////////// 
+///以下为测试函数
+/////////////////////////////////////////////////////////////////////// 
+void HttpServer:: PrintRequest(const Request&req)
+{
+  LOG(DEBUG) << "Request:" << "\n" << req.method << " " <<req.url << "\n" << req.url_path << " " << req.query_string << "\n";
+  //C++11 的range based for auto 会自动推导出类型
+  for(auto it : req.header)
+ // for(Header::const_iterator it = req.header.begin(); it != req.header.end(); ++it)
+  {
+    LOG(DEBUG) << it.first << ":" << it.second << "\n";
+  }
+  LOG(DEBUG) << "\n";
+  LOG(DEBUG) << req.body << "\n";
 }
+
+
+
+}//end http_server 
