@@ -56,7 +56,10 @@ namespace http_server
       //根据Request对象，构造Response对象 HTTP响应报文中的内容
       int HandlerRequest(Context*context);
       int Process404(Context*context); 
-  //   private:
+      int ProcessStaticFile(Context*context);
+      int ProcessCGI(Context*context);
+      void GetFilePath(const std::string&url_path,std::string*file_path);
+    private:
       int ParseFirstLine(const std::string&first_line,std::string*method,std::string*url);
       static void* ThreadEntry(void*arg);
       int ParseUrl(const std::string&url,std::string*url_path,std::string*query_string);

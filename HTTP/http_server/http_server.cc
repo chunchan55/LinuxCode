@@ -167,10 +167,33 @@ END:
     write(context->new_sock,str.c_str(),str.size());
     return 0;
   }
-  //根据Request对象，构造Response对象
+  //根据Request对象,计算生成Response对象
+  //1.静态文件
+  //a)是GET 并且没有query_string作为参数
+  //2.动态生成页面
+  //a)GET 并且存在 query_string 作为参数
+  // b)POST请求
+  
   int HttpServer::HandlerRequest(Context*context)
   {
-    //TODO
+    const Request&req = context->req;
+    Response*resp = &context->resp;
+    resp->code = 200;
+    resp->desc = "OK";
+    //判断当前的处理方式是按照静态文件处理还是动态生成
+    if(req.method == "GET" && req.query_string == "")
+    {
+      return context->server->ProcessStaticFile(context);
+    }
+    else if((req.method == "GET" && req.query_string != "") || req.method == "POST")
+    {
+      return context->server->ProcessCGI(context);
+    }
+    else 
+    {
+      LOG(ERROR) << "Unsupport Method! method=" << req.method << "\n";
+      return -1;
+    }
     return -1;
   }
   int HttpServer::Process404(Context*context)
@@ -188,7 +211,58 @@ END:
     resp->header["Content-Length"] = size;//字符串转为数字
     return 0;
   }
+  //1.通过Request 中的url_path字段，计算出文件在磁盘上的路径是什么
+  //例如 url_path/index.html，想要得到磁盘上的文件就是./wwwroot/index.html
+  //例如url_path/image/1.jpg
+  //注意：./wwwroot 是我们此处约定的根目录，可以根据自己的喜好约定名字
+  //2.打开文件，将文件中的所有内容读取出来放到body中
+  int HttpServer::ProcessStaticFile(Context*context)
+  {
+    const Request& req = context->req;
+    Response*resp = &context->resp;
+    //1.获取到静态文件的完整路径
+    std::string file_path;
+    GetFilePath(req.url_path,&file_path);
+    //2.打开并读取完整的文件
+    int ret = FileUtil::ReadAll(file_path,&resp->body);
+    if(ret < 0)
+    {
+      LOG(ERROR) << "ReadAll error! file_path=" << file_path << "\n";
+      return -1;
+    }
+    return 0;
+  }
+  int HttpServer::ProcessCGI(Context*context)
+  {
+    return 0;
+  }
 
+  //通过url_path找到对应的文件路径
+  //例如请求url可能是 http://192.168.43.110:9090/ 
+  //这种情况下 url_path是/
+  //此时请求等价于 /index.html 
+  //例如请求url可能是 http://192.168.43.110:9090/image/
+  //这种情况下url_path是/
+  //如果url_path指向的是一个目录，就尝试在这个目录下访问一个叫做index.html的文件（这个策略也是我们的一种简单约定） 
+  void HttpServer::GetFilePath(const std::string&url_path,std::string*file_path)
+  {
+    *file_path = "./wwwroot" + url_path;
+    //判断一个路径是普通文件还是目录文件
+    //1.Linux的stat函数
+    //2.通过 boost filesystem模块来进行判定
+    //如果当前文件是一个目录，就可以进行一个文件名拼接，拼接上index.html
+    if(FileUtil::IsDir(*file_path))
+    {
+      //1./image/
+      //2./image
+      if(file_path->back() != '/')
+      {
+        file_path->push_back('/');
+      }
+      (*file_path) += "index.html";
+    }
+    return;
+  }
   int HttpServer::ParseFirstLine(const std::string&first_line,std::string*method,std::string*url)
   {
     std::vector<std::string> tokens;

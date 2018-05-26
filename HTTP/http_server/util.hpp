@@ -9,6 +9,8 @@
 #include<sys/socket.h>
 #include<vector>
 #include<boost/algorithm/string.hpp>
+#include<boost/filesystem.hpp>
+#include<fstream>
 //这些工具类是为了提供方便而已，可以不需要对象来调用的，所以可以使用静态成员函数
 class TimeUtil
 {
@@ -112,6 +114,29 @@ class FileUtil
       }
       return 0;
     }
+   static int ReadAll(const std::string&file_path,std::string*output)
+   {
+     std::ifstream file(file_path.c_str());
+     if(!file.is_open())
+     {
+       LOG(ERROR) << "Open file error! file_path=" << file_path << "\n";
+       return -1;
+     }
+     file.seekg(0,file.end);//调整文件指针的位置，此处是将文件指针调整到文件末尾
+     int length = file.tellg();//查询当前文件指针的位置，返回值就是文件指针位置相对于文件起始位置的偏移量
+     //为了从头读取文件，需要把文件指针设置到开头位置
+     file.seekg(0,file.beg);
+     //读取完整的文件内容
+     output->resize(length);//开辟内存，保证可以存下
+     file.read(const_cast<char*>(output->c_str()),length);
+     //万一忘记写下面的close也没事，因为ifstream对象会在析构的时候自动关闭文件描述符
+     file.close();
+     return 0;
+   }
+   static bool IsDir(const std::string&file_path)
+   {
+     return boost::filesystem::is_directory(file_path);
+   }
 };
 
 class StringUtil
