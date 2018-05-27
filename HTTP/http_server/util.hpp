@@ -8,6 +8,7 @@
 #include<sys/types.h>
 #include<sys/socket.h>
 #include<vector>
+#include<unordered_map>
 #include<boost/algorithm/string.hpp>
 #include<boost/filesystem.hpp>
 #include<fstream>
@@ -133,6 +134,27 @@ class FileUtil
      file.close();
      return 0;
    }
+   static int ReadAll(int fd,std::string*output)
+   {
+     // 这个函数完成从文件描述符中读取所有数据的操作
+     while(true)
+     {
+       char buf[1024] = {0};
+       ssize_t read_size = read(fd,buf,sizeof(buf)-1);
+       if(read_size < 0)
+       {
+         perror("read");
+         return -1;
+       }
+       if(read_size == 0)
+       {
+         return 0;//文件读完
+       }
+       buf[read_size] = '\0';
+       (*output) += buf;
+     }
+     return 0;
+   }
    static bool IsDir(const std::string&file_path)
    {
      return boost::filesystem::is_directory(file_path);
@@ -147,9 +169,30 @@ class StringUtil
   //token_compress_of
   //对于关闭压缩的情况就是有三个字符串
   public:
- static int Split(const std::string&input,const std::string&split_char,std::vector<std::string>*output)
-  {
-    boost::split(*output,input,boost::is_any_of(split_char),boost::token_compress_on);
-    return 0;
-  }
+     typedef std::unordered_map<std::string,std::string> UrlParam;
+     static int Split(const std::string&input,const std::string&split_char,std::vector<std::string>*output)
+      {
+        boost::split(*output,input,boost::is_any_of(split_char),boost::token_compress_on);
+        return 0;
+      }
+     static int ParseUrlParam(const std::string&input,UrlParam*output)
+     {
+       //1.先按照取地址符号进行切分  a=100&b=200
+       std::vector<std::string> params;
+       Split(input,"&",&params);
+       //2.再针对每一个kv，按照 = 切分，放到输出结果中
+       for(auto item : params)
+       {
+         std::vector<std::string> kv;
+         Split(item,"=",&kv);
+         if(kv.size()!=2)
+         {
+           //说明该参数非法
+           LOG(WARNING) << "kv format error! item=" << item << "\n";
+           continue; 
+         }
+         (*output)[kv[0]] = kv[1];//map中的[]方法 存在就查找，不存在就插入
+       }
+       return 0;
+     }
 };

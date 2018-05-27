@@ -1,64 +1,33 @@
-<!DOCTYPE html>
-<html>
+<body>
 
 <head>
-<style>
-#header {
-    background-color:black;
-    color:white;
-    text-align:center;
-    padding:5px;
-}
-#nav {
-    line-height:30px;
-    background-color:#eeeeee;
-    height:300px;
-    width:100px;
-    float:left;
-    padding:5px;	      
-}
-#section {
-    width:350px;
-    float:left;
-    padding:10px;	 	 
-}
-#footer {
-    background-color:black;
-    color:white;
-    clear:both;
-    text-align:center;
-   padding:5px;	 	 
-}
-</style>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 </head>
 
-<body background="/image/bg.jpg">
+<h4>这个表格有一个标题，以及粗边框：下面有一个图片</h4>
 
-<div id="header">
-<h1>My Blog</h1>
-</div>
-
-<div id="nav">
-London<br>
-Paris<br>
-Tokyo<br>
-</div>
-
-<div id="section">
-<h2>London</h2>
-<p>
-London is the capital city of England. It is the most populous city in the United Kingdom,
-with a metropolitan area of over 13 million inhabitants.
-</p>
-<p>
-Standing on the River Thames, London has been a major settlement for two millennia,
-its history going back to its founding by the Romans, who named it Londinium.
-</p>
-</div>
-
-<div id="footer">
-http/blog/chan0311.com
-</div>
-
+<table border="6">
+<caption>我的标题</caption>
+<tr>
+  <td>100</td>
+  <td>200</td>
+  <td>300</td>
+</tr>
+<tr>
+  <td>400</td>
+  <td>500</td>
+  <td>600</td>
+</tr>
+</table>
+<img src="/image/1.jpg"></img>
+<form action="/add" method="GET">
+<form>
+ a:<br>
+<input type="text" name="a">
+<br>
+ b:<br>
+<input type="text" name="b">
+<input type="submit" value="提交">
+</form> 
 </body>
-</html>
+

@@ -1,6 +1,7 @@
 #include"http_server.h"
 #include"util.hpp"
 #include<pthread.h>
+#include<sys/wait.h>
 namespace http_server{
   void* HttpServer::ThreadEntry(void* arg)//不能直接把这个入口函数定义为类的成员函数，因为掉用类成员函数要用对象
   {
@@ -151,17 +152,26 @@ END:
     return 0;
   }
   //实现序列化，把Response对象转换成一个string，写回到socket中
+  //这个函数的细节可能有很大的差异，但是只要能遵守http协议就好
   int HttpServer:: WriteOneResponse(Context*context)
   {
-    Response* resp = &context->resp;
-    std::stringstream ss;
-    ss << "HTTP/1.1" << resp->code << " " <<resp->desc << "\n";
-    for(auto item : resp->header)
-    {
-      ss << item.first << ":" << item.second << "\n";
+      Response& resp = context->resp;
+      std::stringstream ss;
+      ss << "HTTP/1.1" << resp.code << " " <<resp.desc << "\n";
+      if(resp.cgi_resp == ""){
+        //当前认为是在处理静态页面
+        for(auto item : resp.header)
+        {
+          ss << item.first << ":" << item.second << "\n";
+        }
+        ss << "\n";
+        ss << resp.body;
     }
-    ss << "\n";
-    ss << resp->body;
+    else
+    {
+      //当前是在处理CGI生成的页面,cgi_resp 同时包含了相应数据的header空行和body
+      ss << resp.cgi_resp;
+    }
     //2.将序列化的结果写入到socket中
     const std::string&str = ss.str();//获取到stringstream里面包含的string对象（使用了引用，并没有拷贝）
     write(context->new_sock,str.c_str(),str.size());
@@ -232,8 +242,81 @@ END:
     }
     return 0;
   }
+  //功能的实现主要就是由CGI进行实现的，锁一在后序需要进行改善项目的时候，就是通过修改这部分的代码
   int HttpServer::ProcessCGI(Context*context)
   {
+    const Request&req = context->req;
+    Response*resp = &context->resp;
+    //1.创建一对匿名管道（父子进城要双向通信）
+    int fd1[2],fd2[2];
+    pipe(fd1);
+    pipe(fd2);
+    int father_write = fd1[1];//父进程写
+    int child_read = fd1[0];
+    int child_write = fd2[1];
+    int father_read = fd2[0];
+    //2.设置环境变量
+    //a)METHOD请求方法
+    std::string env = "REQUEST_METHOD=" + req.method;
+    putenv(const_cast<char*>(env.c_str()));
+    //b)GET方法 QUERY_STRING请求的参数
+    if(req.method == "GET")
+    {
+      env = "QUERY_STRING=" + req.query_string;
+      putenv(const_cast<char*>(env.c_str()));
+    }
+    else if(req.method == "POST")
+    //c)POST方法，就设置CONTENT_LENGTH
+    {
+      //Header::const_iterator 
+      auto pos = req.header.find("Content-Length");//用auto自动推导类型
+      env = "CONTENT_LENGTH=" + pos->second;
+      putenv(const_cast<char*>(env.c_str()));
+    }
+    pid_t ret = fork();
+    if(ret < 0)
+    {
+      perror("fork");
+      goto END;
+    }
+    if(ret > 0)
+    {
+      //父进程开始先把子进程的文件描述符关闭
+      close(child_read);
+      close(child_write);
+      //3.fork，父进程流程
+      //a)如果是POST请求，父进程就要把body写入到管道中
+      if(req.method == "POST"){
+        write(father_write,req.body.c_str(),req.body.size());
+      }
+      //b)阻塞式的读取管道，尝试把子进程的结果读取出来，并且放到Response对象中
+      FileUtil::ReadAll(father_read,&resp->cgi_resp);
+      //c)对子进程进行进程等待（编僵尸进程）      
+      wait(NULL);
+    }
+    else 
+    {
+      close(father_read);
+      close(father_write);
+      //4.fork，子进程流程
+      //a)把标准输入和标准输出进行重定向
+      //打到新号码，new是old的拷贝 标准输入输出是new
+      dup2(child_read,0);
+      dup2(child_write,1);
+      //b)先要获取到要替换的可执行文件是哪个（通过url_path中获取）
+      std::string file_path;
+      GetFilePath(req.url_path,&file_path);
+      //c)进行进程的程序替换
+      execl(file_path.c_str(),file_path.c_str(),NULL);
+      //d)由CGI 可执行程序完成动态页面的计算，并且写回数据到管道中
+      //这部分逻辑，我们需要放到另外的单独的文件中实现并且根据该文件编译生成新的CGI可执行程序
+    }
+END:
+    //TODO 统一处理收尾工作
+    close(father_read);
+    close(father_write);
+    close(child_read);
+    close(child_write);
     return 0;
   }
 

@@ -28,8 +28,11 @@ namespace http_server
   {
     int code;                  //状态码
     std::string desc;         //状态码描述
+    //下面这两个变量是专门给处理静态页面时使用的，当前请求如果是请求静态页面，这两个字段会被填充，并且cgi_resp字段为空
     Header header;           //响应报文中的header数据
     std::string body;       //响应报文中的body
+    //下面这个变量专门给CGI使用，并且如果当前请求时CGI的话，cgi_resp就会被CGI程序进行填充，并且header和body这两个字段为空
+    std::string cgi_resp;   //CGI程序返回给父进程的内容，包含了部分header和body，这个变量是为了避免解析CGI程序返回的内容，因为这部分内容可以直接写到socket中
   };
 
   //当前请求的上下文,包含了这次请求的所有需要的中间数据
