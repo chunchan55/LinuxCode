@@ -1,0 +1,33 @@
+<body>
+
+<head``y``
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+</head>
+
+<h4>这个表格有一个标题，以及粗边框：下面有一个图片</h4>
+
+<table border="6">
+<caption>我的标题</caption>
+<tr>
+  <td>100</td>
+  <td>200</td>
+  <td>300</td>
+</tr>
+<tr>
+  <td>400</td>
+  <td>500</td>
+  <td>600</td>
+</tr>
+</table>
+<img src="/image/1.jpg"></img>
+<form action="/add" method="GET">
+<form>
+ a:<br>
+<input type="text" name="a">
+<br>
+ b:<br>
+<input type="text" name="b">
+<input type="submit" value="提交">
+</form> 
+</body>
+
