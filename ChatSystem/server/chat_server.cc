@@ -22,7 +22,7 @@ namespace server{
       perror("blind");
       return -1;
     }
-//    LOG(INFO) << "Server Start OK!\n";
+    LOG(INFO) << "Server Start OK!\n";
     //创建两个线程一个从socket中读取数据，一个进行广播
     printf("Server Start OK\n");
     pthread_t productor,consumer;
@@ -64,7 +64,7 @@ namespace server{
       perror("recvfrom");
       return -1;
     }
-    //LOG(INFO) << "[Request] " << buf << "\n"; 
+    LOG(INFO) << "[Request] " << buf << "\n"; 
     buf[read_size] = '\0';
     //2.把数据插入到BlockQueue中
     Context context;
@@ -98,13 +98,13 @@ namespace server{
     //的效果，但是这种实现凡事比较蠢，完全可以控制客户端，不经过网络传输就可以实现这个功能，咱们此处还是用这个蠢方法，
     //更优越的方法交给之后来进行实现
     //这里的context.str相当于是一个序列化之后的字符串
-    //LOG(INFO) << "========friend_list=======\n";
+    LOG(INFO) << "========friend_list=======\n";
     for(auto item : online_friend_list_)
     {
-      //LOG(INFO) << item.first << " " << inet_ntoa(item.second.sin_addr)<<":" << ntohs(item.second.sin_port);
+      LOG(INFO) << item.first << " " << inet_ntoa(item.second.sin_addr)<<":" << ntohs(item.second.sin_port);
       SendMsg(context.str,item.second);
     }
-    //LOG(INFO) << "===============\n";
+    LOG(INFO) << "===============\n";
    return 0;
   }
   void ChatServer::AddUser(sockaddr_in addr,const std::string&name)
@@ -130,7 +130,7 @@ namespace server{
   {
     //把这个数据通过sendto发送给客户端
     sendto(sock_,data.data(),data.size(),0,(sockaddr*)&addr,sizeof(addr));
-   // LOG(INFO) << "[Reponse] " << inet_ntoa(addr.sin_addr) << ":" << ntohs(addr.sin_port) << " " << data << "\n";
+    LOG(INFO) << "[Reponse] " << inet_ntoa(addr.sin_addr) << ":" << ntohs(addr.sin_port) << " " << data << "\n";
   }
 
 }//end serve

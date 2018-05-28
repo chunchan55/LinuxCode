@@ -4,6 +4,7 @@
 #include<signal.h>
 #include<stdlib.h>
 #include"../server/api.hpp"
+#include"../common/util.hpp"
 client::ChatClient* g_client = NULL;//定义一个全局变量；也可以使用单例莫属进行封装
 client::Window* g_window = NULL;
 pthread_mutex_t g_lock;
@@ -78,7 +79,7 @@ void Run(const std::string&ip,short port)
   if(ret < 0)
   {
     //此次出其实是模仿了glog 谷歌的开源库
-    //LOG(ERROR) << "client Init failed!\n";//最简单的打日志的方法
+    LOG(ERROR) << "client Init failed!\n";//最简单的打日志的方法
     return;
   }
   //2.提示客户端输入用户名和学校
@@ -107,7 +108,7 @@ int main(int argc,char*argv[])
 {
   if(argc != 3)
   {
-    //LOG(ERROR) << "Usage ./chat_client [ip] [port]\n";
+    LOG(ERROR) << "Usage ./chat_client [ip] [port]\n";
     return 1;
   }
   Run(argv[1],atoi(argv[2]));

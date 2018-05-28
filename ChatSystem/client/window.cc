@@ -1,6 +1,6 @@
 #include"window.h"
 #include<locale.h>
-
+#include "../common/util.hpp"
 namespace  client
 {
   Window::Window()
@@ -94,7 +94,7 @@ namespace  client
     int max_line = LINES * 3 / 5 - 2;
     if(max_line < 3)
     {
-      //LOG(ERROR) << "max_line too small\n";
+      LOG(ERROR) << "max_line too small\n";
       exit(0);
     }
     if(msgs_.size() > max_line)

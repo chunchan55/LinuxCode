@@ -3,3 +3,10 @@
 {"cmd":"","msg":"niaho","name":"chan2","school":"222"}
 {"cmd":"","msg":"nnn","name":"chan2","school":"222"}
 {"cmd":"","msg":"nnn","name":"chan2","school":"222"}
+{"cmd":"","msg":"你好","name":"chaner","school":"陕科大"}
+{"cmd":"","msg":"chunchan","name":"yuaner","school":"西工大"}
+{"cmd":"","msg":"chunchan","name":"yuaner","school":"西工大"}
+{"cmd":"","msg":"你好","name":"yuaner","school":"西工大"}
+{"cmd":"","msg":"你好","name":"yuaner","school":"西工大"}
+{"cmd":"quit","msg":"quit","name":"chaner","school":"陕科大"}
+{"cmd":"","msg":"nihai","name":"yuaner","school":"西工大"}
