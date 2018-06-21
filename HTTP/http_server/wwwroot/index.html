@@ -1,66 +1,203 @@
-<!DOCTYPE html>
-<html>
-<head>                                                                                                                                                                 
- <meta http-equiv="Content-Type" content="text/html;charset=utf-8">                                                                                                     </head>   
+<!doctype html>
+
+<html lang="en">
 <head>
-<style>
-#header {
-    background-color:black;
-    color:white;
-    text-align:center;
-    padding:5px;
-}
-#nav {
-    line-height:30px;
-    background-color:#eeeeee;
-    height:300px;
-    width:100px;
-    float:left;
-    padding:5px;	      
-}
-#section {
-    width:350px;
-    float:left;
-    padding:10px;	 	 
-}
-#footer {
-    background-color:black;
-    color:white;
-    clear:both;
-    text-align:center;
-   padding:5px;	 	 
-}
-</style>
+
+  <meta charset="utf-8">
+  <title>INDEX - THOMSOON - Portfolio with grid and modern simplicity style - download now!</title>
+  <meta name="description" content="THOMSOON - Portfolio with grid HTML5 and CSS3 modern simplicity style template. Check my portfolio. Download free now with file Photoshop!">
+  <meta name="keywords" content="thomsoon, simplicity, theme, html5, download, free psd">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="thomsoon.com">
+  <link rel="icon" type="image/png" href="img/icon.png" />
+
+<!--Style-->
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style-responsive.css">  
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
 </head>
 
-<body background="/image/2.jpg">
+<body>
 
+<!--Preloader-->
 
-
-<div id="header">
-<h1>我的主页</h1>
+<div class="preloader" id="preloader">
+    <div class="item">
+      <div class="spinner">
+      </div>
+    </div>
 </div>
 
-<div id="nav">
-  <a href="http://blog.csdn.net/chan0311" class="more"  data-toggle="modal" data-target="#myModal">博客<br></a>
-<a href="http://github.com/chunchan55" class="more"  data-toggle="modal" data-target="#myModal">GitHub<br></a>
-<a href="https://email.163.com" class="more"  data-toggle="modal" data-target="#myModal">邮箱<br></a>
+<div class="opacity-nav">
+
+        <div class="menu-index" id="buttons" style="z-index:999999">
+        <i class="fa  fa-close"></i>
+        </div>
+
+    <ul class="menu-fullscreen">
+      <li><a class="ajax-link" href="single.html">Home</a></li>
+      <li><a class="ajax-link" href="projects.html">Projects</a></li>
+      <li><a class="ajax-link" href="about-us.html">About us</a></li>
+      <li><a class="ajax-link" href="contact.html">Contact</a></li>
+    </ul>
+
 </div>
 
-<div id="section">
-<h2>春婵的自述<h2>
-<p>
-左侧是我的博客链接，GitHub链接和邮箱，欢迎点击
-</p>
-<p>
-Standing on the River Thames, London has been a major settlement for two millennia,
-its history going back to its founding by the Romans, who named it Londinium.
-</p>
+
+  <!--Header-->
+  <header id="fullscreen">
+    
+      <div class="logo" id="full"><a class="ajax-link" href="index.html">春婵的主页</a></div>
+      
+        <div class="menu-index" id="button">
+        <i class="fa fa-bars"></i>
+        </div>
+
+  </header>
+
+  <div class="clear"></div>
+
+  <!--Content-->
+
+  <div class="content" id="ajax-content">
+
+
+        <div class="text-intro" id="site-type">
+
+          
+          <h2>下面是我的博客和github链接和邮箱，欢迎点击</h2>
+
+        </div>
+                                                          
+                                                         
+ 
+  <!--Portfolio grid-->
+
+  <ul class="portfolio-grid" id="portfolio-sidebar">
+
+    
+    <li class="grid-item">
+      <img src="img/portfolio/1.jpg">
+        <a class="ajax-link" href="single.html">  
+          <div class="grid-hover">
+            <h1><a href="http://blog.csdn.net/chan0311" class="more"  data-toggle="modal" data-target="#myModal">我的博客<br></a></h1>
+            
+          </div>
+        </a>  
+    </li>
+
+    <li class="grid-item">
+      <img src="img/portfolio/5.jpg">
+        <a class="ajax-link" href="single-fullscreen.html">  
+          <div class="grid-hover">
+            <h1><a href="http://github.com/chunchan55" class="more"  data-toggle="modal" data-target="#myModal">我的GitHub<br></a></h1>
+         
+          </div>
+        </a>      
+    </li>    
+    
+    <li class="grid-item">
+      <img src="img/portfolio/2.jpg">
+        <a class="ajax-link" href="#">  
+          <div class="grid-hover">
+            <h1><a href="https://email.163.com" class="more"  data-toggle="modal" data-target="#myModal">我的邮箱<br></a> 
+</h1>
+          
+          </div>
+        </a>      
+    </li>  
+    
+    <li class="grid-item">
+      <img src="img/portfolio/1.jpg">
+        <a class="ajax-link" href="#">  
+          <div class="grid-hover">
+            
+          </div>
+        </a>      
+    </li>    
+
+    <li class="grid-item">
+      <img src="img/portfolio/2.jpg">
+        <a class="ajax-link" href="#">  
+          <div class="grid-hover">
+            
+          </div>
+        </a>      
+    </li>    
+
+    <li class="grid-item">
+      <img src="img/portfolio/1.jpg">
+        <a class="ajax-link" href="#">  
+          <div class="grid-hover">
+            
+          </div>
+        </a>      
+    </li>  
+
+  </ul>
+
+  </div>
+<div class="chs">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+  <!--Home Sidebar-->
+
+<div id="ajax-sidebar">
+
+  <div class="home-sidebar" style="background-image:url('img/home-sidebar.jpg')" id="hero">
+
+    <div class="parallax-option" data-jkit="[parallax:strength=0.8;axis=both]">
+
+      <div class="parallax parallax1"><img src="img/business-card-2.png"></div>
+    
+    </div>
+
+    <div class="parallax-option" data-jkit="[parallax:strength=0.3;axis=both]">
+
+      <div class="parallax parallax1"><img src="img/business-card.png"></div>
+    
+    </div>
+
+  </div>
+
 </div>
 
-<div id="footer">
-happy everyday！^_^
-</div>
+
+  <!--Footer-->
+
+  <footer>
+
+   
+
+  </footer>
+
+
+
+<!--Scripts-->
+
+  <script src="js/jquery.min.js"></script>
+	<script src="js/jquery.easing.min.js"></script>
+	<script src="js/modernizr.custom.42534.js" type="text/javascript"></script>
+  <script src="js/jquery.waitforimages.js" type="text/javascript"></script>
+  <script src="js/typed.js" type="text/javascript"></script>
+  <script src="js/masonry.pkgd.min.js" type="text/javascript"></script>  
+  <script src="js/imagesloaded.pkgd.min.js" type="text/javascript"></script>    
+  <script src="js/jquery.jkit.1.2.16.min.js"></script>
+ 
+  <script src="js/script.js" type="text/javascript"></script>
+  
+	<script>
+    $('#button, #buttons').on('click', function() {
+      $( ".opacity-nav" ).fadeToggle( "slow", "linear" );
+    // Animation complete.
+    });
+  </script>
+
 
 </body>
 </html>

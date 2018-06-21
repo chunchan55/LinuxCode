@@ -1,0 +1,298 @@
+[I1529550573 http_server.cc:70]ServerStart OK!
+[D1529550607 http_server.cc:414]Request:
+GET /
+/ 
+[D1529550607 http_server.cc:419]Connection:keep-alive
+[D1529550607 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529550607 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529550607 http_server.cc:419]Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+[D1529550607 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529550607 http_server.cc:419]Upgrade-Insecure-Requests:1
+[D1529550607 http_server.cc:419]Host:192.168.1.117:9090
+[D1529550607 http_server.cc:421]
+[D1529550607 http_server.cc:422]
+[D1529550607 http_server.cc:414]Request:
+GET /image/2.jpg
+/image/2.jpg 
+[D1529550607 http_server.cc:419]Connection:keep-alive
+[D1529550607 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529550607 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529550607 http_server.cc:419]Referer:http://192.168.1.117:9090/
+[D1529550607 http_server.cc:419]Accept:*/*
+[D1529550607 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529550607 http_server.cc:419]Host:192.168.1.117:9090
+[D1529550607 http_server.cc:421]
+[D1529550607 http_server.cc:422]
+[D1529550608 http_server.cc:414]Request:
+GET /favicon.ico
+/favicon.ico 
+[D1529550608 http_server.cc:419]Connection:keep-alive
+[D1529550608 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529550608 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529550608 http_server.cc:419]Accept:*/*
+[D1529550608 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529550608 http_server.cc:419]Host:192.168.1.117:9090
+[D1529550608 http_server.cc:421]
+[D1529550608 http_server.cc:422]
+[E1529550608 util.hpp:123]Open file error! file_path=./wwwroot/favicon.ico
+[E1529550608 http_server.cc:240]ReadAll error! file_path=./wwwroot/favicon.ico
+[E1529550608 http_server.cc:27]ReadOneRequest error!
+[D1529550608 http_server.cc:414]Request:
+GET /favicon.ico
+/favicon.ico 
+[D1529550608 http_server.cc:419]Connection:keep-alive
+[D1529550608 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529550608 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529550608 http_server.cc:419]Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+[D1529550608 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529550608 http_server.cc:419]Host:192.168.1.117:9090
+[D1529550608 http_server.cc:421]
+[D1529550608 http_server.cc:422]
+[E1529550608 util.hpp:123]Open file error! file_path=./wwwroot/favicon.ico
+[E1529550608 http_server.cc:240]ReadAll error! file_path=./wwwroot/favicon.ico
+[E1529550608 http_server.cc:27]ReadOneRequest error!
+[D1529550911 http_server.cc:414]Request:
+GET /
+/ 
+[D1529550911 http_server.cc:419]Connection:keep-alive
+[D1529550911 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529550911 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529550911 http_server.cc:419]Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+[D1529550911 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529550911 http_server.cc:419]Upgrade-Insecure-Requests:1
+[D1529550911 http_server.cc:419]Host:192.168.1.117:9090
+[D1529550911 http_server.cc:421]
+[D1529550911 http_server.cc:422]
+[D1529550911 http_server.cc:414]Request:
+GET /image/2.jpg
+/image/2.jpg 
+[D1529550911 http_server.cc:419]Connection:keep-alive
+[D1529550911 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529550911 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529550911 http_server.cc:419]Referer:http://192.168.1.117:9090/
+[D1529550911 http_server.cc:419]Accept:*/*
+[D1529550911 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529550911 http_server.cc:419]Host:192.168.1.117:9090
+[D1529550911 http_server.cc:421]
+[D1529550911 http_server.cc:422]
+[D1529550919 http_server.cc:414]Request:
+GET /
+/ 
+[D1529550919 http_server.cc:419]Connection:keep-alive
+[D1529550919 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529550919 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529550919 http_server.cc:419]Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+[D1529550919 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529550919 http_server.cc:419]Cache-Control:max-age=0
+[D1529550919 http_server.cc:419]Upgrade-Insecure-Requests:1
+[D1529550919 http_server.cc:419]Host:192.168.1.117:9090
+[D1529550919 http_server.cc:421]
+[D1529550919 http_server.cc:422]
+[D1529550919 http_server.cc:414]Request:
+GET /image/2.jpg
+/image/2.jpg 
+[D1529550919 http_server.cc:419]Connection:keep-alive
+[D1529550919 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529550919 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529550919 http_server.cc:419]Referer:http://192.168.1.117:9090/
+[D1529550919 http_server.cc:419]Accept:*/*
+[D1529550919 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529550919 http_server.cc:419]Cache-Control:max-age=0
+[D1529550919 http_server.cc:419]Host:192.168.1.117:9090
+[D1529550919 http_server.cc:421]
+[D1529550919 http_server.cc:422]
+[D1529551040 http_server.cc:414]Request:
+GET /
+/ 
+[D1529551040 http_server.cc:419]Connection:keep-alive
+[D1529551040 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529551040 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529551040 http_server.cc:419]Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+[D1529551040 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529551040 http_server.cc:419]Upgrade-Insecure-Requests:1
+[D1529551040 http_server.cc:419]Host:192.168.1.117:9090
+[D1529551040 http_server.cc:421]
+[D1529551040 http_server.cc:422]
+[D1529551040 http_server.cc:414]Request:
+GET /image/2.jpg
+/image/2.jpg 
+[D1529551040 http_server.cc:419]Connection:keep-alive
+[D1529551040 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529551040 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529551040 http_server.cc:419]Referer:http://192.168.1.117:9090/
+[D1529551040 http_server.cc:419]Accept:*/*
+[D1529551040 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529551040 http_server.cc:419]Host:192.168.1.117:9090
+[D1529551040 http_server.cc:421]
+[D1529551040 http_server.cc:422]
+[D1529551108 http_server.cc:414]Request:
+GET /
+/ 
+[D1529551108 http_server.cc:419]Connection:keep-alive
+[D1529551108 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529551108 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529551108 http_server.cc:419]Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+[D1529551108 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529551108 http_server.cc:419]Cache-Control:max-age=0
+[D1529551108 http_server.cc:419]Upgrade-Insecure-Requests:1
+[D1529551108 http_server.cc:419]Host:192.168.1.117:9090
+[D1529551108 http_server.cc:421]
+[D1529551108 http_server.cc:422]
+[D1529551108 http_server.cc:414]Request:
+GET /image/2.jpg
+/image/2.jpg 
+[D1529551108 http_server.cc:419]Connection:keep-alive
+[D1529551108 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529551108 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529551108 http_server.cc:419]Referer:http://192.168.1.117:9090/
+[D1529551108 http_server.cc:419]Accept:*/*
+[D1529551108 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529551108 http_server.cc:419]Cache-Control:max-age=0
+[D1529551108 http_server.cc:419]Host:192.168.1.117:9090
+[D1529551108 http_server.cc:421]
+[D1529551108 http_server.cc:422]
+[D1529551275 http_server.cc:414]Request:
+GET /
+/ 
+[D1529551275 http_server.cc:419]Connection:keep-alive
+[D1529551275 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529551275 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529551275 http_server.cc:419]Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+[D1529551275 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529551275 http_server.cc:419]Cache-Control:max-age=0
+[D1529551275 http_server.cc:419]Upgrade-Insecure-Requests:1
+[D1529551275 http_server.cc:419]Host:192.168.1.117:9090
+[D1529551275 http_server.cc:421]
+[D1529551275 http_server.cc:422]
+[D1529551275 http_server.cc:414]Request:
+GET /image/2.jpg
+/image/2.jpg 
+[D1529551275 http_server.cc:419]Connection:keep-alive
+[D1529551275 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529551275 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529551275 http_server.cc:419]Referer:http://192.168.1.117:9090/
+[D1529551275 http_server.cc:419]Accept:*/*
+[D1529551275 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529551275 http_server.cc:419]Cache-Control:max-age=0
+[D1529551275 http_server.cc:419]Host:192.168.1.117:9090
+[D1529551275 http_server.cc:421]
+[D1529551275 http_server.cc:422]
+[D1529551460 http_server.cc:414]Request:
+GET /
+/ 
+[D1529551460 http_server.cc:419]Connection:keep-alive
+[D1529551460 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529551460 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529551460 http_server.cc:419]Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+[D1529551460 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529551460 http_server.cc:419]Cache-Control:max-age=0
+[D1529551460 http_server.cc:419]Upgrade-Insecure-Requests:1
+[D1529551460 http_server.cc:419]Host:192.168.1.117:9090
+[D1529551460 http_server.cc:421]
+[D1529551460 http_server.cc:422]
+[D1529551460 http_server.cc:414]Request:
+GET /image/2.jpg
+/image/2.jpg 
+[D1529551460 http_server.cc:419]Connection:keep-alive
+[D1529551460 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529551460 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529551460 http_server.cc:419]Referer:http://192.168.1.117:9090/
+[D1529551460 http_server.cc:419]Accept:*/*
+[D1529551460 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529551460 http_server.cc:419]Cache-Control:max-age=0
+[D1529551460 http_server.cc:419]Host:192.168.1.117:9090
+[D1529551460 http_server.cc:421]
+[D1529551460 http_server.cc:422]
+[D1529551585 http_server.cc:414]Request:
+GET /
+/ 
+[D1529551585 http_server.cc:419]Connection:keep-alive
+[D1529551585 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529551585 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529551585 http_server.cc:419]Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+[D1529551585 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529551585 http_server.cc:419]Cache-Control:max-age=0
+[D1529551585 http_server.cc:419]Upgrade-Insecure-Requests:1
+[D1529551585 http_server.cc:419]Host:192.168.1.117:9090
+[D1529551585 http_server.cc:421]
+[D1529551585 http_server.cc:422]
+[D1529551585 http_server.cc:414]Request:
+GET /image/2.jpg
+/image/2.jpg 
+[D1529551585 http_server.cc:419]Connection:keep-alive
+[D1529551585 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529551585 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529551585 http_server.cc:419]Referer:http://192.168.1.117:9090/
+[D1529551585 http_server.cc:419]Accept:*/*
+[D1529551585 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529551585 http_server.cc:419]Cache-Control:max-age=0
+[D1529551585 http_server.cc:419]Host:192.168.1.117:9090
+[D1529551585 http_server.cc:421]
+[D1529551585 http_server.cc:422]
+[D1529551930 http_server.cc:414]Request:
+GET /
+/ 
+[D1529551930 http_server.cc:419]Connection:keep-alive
+[D1529551930 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529551930 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529551930 http_server.cc:419]Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+[D1529551930 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529551930 http_server.cc:419]Upgrade-Insecure-Requests:1
+[D1529551930 http_server.cc:419]Host:192.168.1.117:9090
+[D1529551930 http_server.cc:421]
+[D1529551930 http_server.cc:422]
+[D1529551930 http_server.cc:414]Request:
+GET /image/2.jpg
+/image/2.jpg 
+[D1529551930 http_server.cc:419]Connection:keep-alive
+[D1529551930 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529551930 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529551930 http_server.cc:419]Referer:http://192.168.1.117:9090/
+[D1529551930 http_server.cc:419]Accept:*/*
+[D1529551930 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529551930 http_server.cc:419]Host:192.168.1.117:9090
+[D1529551930 http_server.cc:421]
+[D1529551930 http_server.cc:422]
+[D1529552094 http_server.cc:414]Request:
+GET /
+/ 
+[D1529552094 http_server.cc:419]Connection:keep-alive
+[D1529552094 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529552094 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529552094 http_server.cc:419]Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+[D1529552094 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529552094 http_server.cc:419]Cache-Control:max-age=0
+[D1529552094 http_server.cc:419]Upgrade-Insecure-Requests:1
+[D1529552094 http_server.cc:419]Host:192.168.1.117:9090
+[D1529552094 http_server.cc:421]
+[D1529552094 http_server.cc:422]
+[D1529552094 http_server.cc:414]Request:
+GET /image/2.jpg
+/image/2.jpg 
+[D1529552094 http_server.cc:419]Connection:keep-alive
+[D1529552094 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529552094 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529552094 http_server.cc:419]Referer:http://192.168.1.117:9090/
+[D1529552094 http_server.cc:419]Accept:*/*
+[D1529552094 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529552094 http_server.cc:419]Cache-Control:max-age=0
+[D1529552094 http_server.cc:419]Host:192.168.1.117:9090
+[D1529552094 http_server.cc:421]
+[D1529552094 http_server.cc:422]
+[D1529552211 http_server.cc:414]Request:
+GET /
+/ 
+[D1529552211 http_server.cc:419]Connection:keep-alive
+[D1529552211 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1529552211 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1529552211 http_server.cc:419]Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+[D1529552211 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0
+[D1529552211 http_server.cc:419]Cache-Control:max-age=0
+[D1529552211 http_server.cc:419]Upgrade-Insecure-Requests:1
+[D1529552211 http_server.cc:419]Host:192.168.1.117:9090
+[D1529552211 http_server.cc:421]
+[D1529552211 http_server.cc:422]
+[D1529552211 http_server.cc:414]Request:
+GET /image/2.jpg
+/image/2.jpg 
+[D1529552211 http_ser
