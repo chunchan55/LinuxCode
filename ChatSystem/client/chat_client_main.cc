@@ -8,6 +8,7 @@
 client::ChatClient* g_client = NULL;//定义一个全局变量；也可以使用单例莫属进行封装
 client::Window* g_window = NULL;
 pthread_mutex_t g_lock;
+
 //谷歌常见的C++开源库
 //protobuf:用来序列化
 //glog:打日志
@@ -60,6 +61,8 @@ void* Recv(void*arg)
 }
 void Quit(int sig)
 {
+
+
   (void)sig;
   //此处delete最主要的目的是为了执行析构函数，尤其是g_window的析构函数，因为这个函数对ncurses进行了销毁动作
   //如果不做这个动作，很可能会导致终端显示混乱
@@ -70,7 +73,8 @@ void Quit(int sig)
 }
 void Run(const std::string&ip,short port)
 {
-  //0.捕捉SIGINIT信号
+
+ //0.捕捉SIGINIT信号
   signal(SIGINT,Quit);
   pthread_mutex_init(&g_lock,NULL);
   //1.初始化客户端核心模块
@@ -78,7 +82,7 @@ void Run(const std::string&ip,short port)
   int ret = g_client->Init(ip,port);
   if(ret < 0)
   {
-    //此次出其实是模仿了glog 谷歌的开源库
+    //此次出其实是模仿 谷歌的开源库
     LOG(ERROR) << "client Init failed!\n";//最简单的打日志的方法
     return;
   }
@@ -92,6 +96,7 @@ void Run(const std::string&ip,short port)
   //3.初始化用户界面模块
   g_window = new client::Window();
   g_window->DrawHeader();
+
   //4.创建两个线程让我们的线程完成数据的读取和发送
   pthread_t stid,rtid;
   pthread_create(&stid,NULL,Send,NULL);

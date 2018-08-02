@@ -10,3 +10,33 @@
 {"cmd":"","msg":"你好","name":"yuaner","school":"西工大"}
 {"cmd":"quit","msg":"quit","name":"chaner","school":"陕科大"}
 {"cmd":"","msg":"nihai","name":"yuaner","school":"西工大"}
+{"cmd":"","msg":"�","name":"chan","school":"陕科大"}
+{"cmd":"","msg":"��哈","name":"chan","school":"陕科大"}
+{"cmd":"","msg":"你好","name":"孙春婵","school":"陕科大"}
+{"cmd":"","msg":"你好","name":"sun\b","school":"k"}
+{"cmd":"","msg":"nihao","name":"chan","school":"qqq"}
+{"cmd":"","msg":"n","name":"chan","school":"qqq"}
+{"cmd":"","msg":"iahi\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b","name":"chan","school":"qqq"}
+{"cmd":"","msg":"nihao","name":"chan","school":"qqq"}
+{"cmd":"","msg":"薛媛","name":"chan","school":"qqq"}
+{"cmd":"","msg":"","name":"chan","school":"qqq"}
+{"cmd":"","msg":"\u001B\b�","name":"chan","school":"qqq"}
+{"cmd":"","msg":"nihao","name":"chan","school":"nii"}
+{"cmd":"","msg":"nihao ","name":"nnnn","school":"111"}
+{"cmd":"","msg":"nihao ","name":"nnnn","school":"111"}
+{"cmd":"","msg":"niha","name":"chan","school":"nii"}
+{"cmd":"","msg":"niha","name":"chan","school":"nii"}
+{"cmd":"quit","msg":"quit","name":"chan","school":"nii"}
+{"cmd":"","msg":"nishi","name":"chan","school":"1111"}
+{"cmd":"","msg":"nihao ","name":"chan","school":"1111"}
+{"cmd":"","msg":"hello","name":"chan","school":"1111"}
+{"cmd":"","msg":"niha","name":"qqqq","school":"2222"}
+{"cmd":"","msg":"hello","name":"chan","school":"111"}
+{"cmd":"","msg":"hello","name":"chan","school":"111"}
+{"cmd":"","msg":"hello","name":"chan","school":"111"}
+{"cmd":"","msg":"hello","name":"chan","school":"111"}
+{"cmd":"","msg":"nih","name":"chan","school":"111"}
+{"cmd":"","msg":"nih","name":"chan","school":"111"}
+{"cmd":"","msg":"222","name":"qqqq","school":"2222"}
+{"cmd":"","msg":"222","name":"qqqq","school":"2222"}
+{"cmd":"quit","msg":"quit","name":"chan","school":"111"}

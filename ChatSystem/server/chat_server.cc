@@ -25,6 +25,7 @@ namespace server{
     LOG(INFO) << "Server Start OK!\n";
     //创建两个线程一个从socket中读取数据，一个进行广播
     printf("Server Start OK\n");
+
     pthread_t productor,consumer;
     pthread_create(&productor,NULL,Product,this);
     pthread_create(&consumer,NULL,Consume,this);
@@ -34,21 +35,21 @@ namespace server{
   }
   void* ChatServer::Consume(void*arg)
   {
-    //生产者线程，做的主要事情就是读取socket中的数据，并且写到BlockQueue中
     ChatServer* server = reinterpret_cast<ChatServer*> (arg);
-    //咱们的RecnMsg读取一次数据，并且写到BlockQueue中
     while(true)
     {
-      server->RecvMsg();
+      server->BroadCast();
     }
     return NULL;
   }
   void* ChatServer::Product(void*arg)
   {
+    //生产者线程，做的主要事情就是读取socket中的数据，并且写到BlockQueue中
+    //RecnMsg读取一次数据，并且写到BlockQueue中
     ChatServer* server = reinterpret_cast<ChatServer*> (arg);
     while(true)
     {
-      server->BroadCast();
+      server->RecvMsg();
     }
     return NULL;
   }

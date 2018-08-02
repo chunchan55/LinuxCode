@@ -20,7 +20,7 @@ namespace server
   {
     public:
       int Start(const std::string&ip,short port);
-      int RecvMsg();//接收消息
+      int RecvMsg();//
       int BroadCast();
     private:
       static void* Consume(void*);//生产者
