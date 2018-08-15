@@ -1,6 +1,9 @@
 #include<iostream>
 using namespace std;
-
+#include<assert.h>
+#include<string>
+#include<string.h>
+#include<stack>
 struct TreeNode
 {
   TreeNode*_left;
@@ -21,7 +24,85 @@ class Tree
   public:
   Tree()
     :_root(NULL)
+  {}
+  Tree(int*a,size_t n,const int&invalid)
   {
-
+    assert(a);
+    size_t  index = 0;
+    _root = CreateTree(a,n,index,invalid);
   }
+  Node*CreateTree(int*a,size_t n,size_t& index,const int&invalid)
+  {
+    Node*root = NULL;
+    if(index < n && a[index] != invalid)
+    {
+      root = new Node(a[index]);
+      root->_left = CreateTree(a,n,++index,invalid);
+      root->_right = CreateTree(a,n,++index,invalid);
+    }
+    return root;
+  }
+  Node*GetRoot()
+  {
+    return _root;
+  }
+  void PreOrder_N(Node*root)
+  {
+    Node*cur = root;
+    stack<Node*>s;
+    if(cur == NULL)
+      return;
+    while(cur || !s.empty())
+    {
+      while(cur)
+      {
+        cout << cur->_val << " ";
+        s.push(cur);
+        cur = cur->_left;
+      }
+      if(!s.empty())
+      {
+        cur = s.top();
+        s.pop();
+        cur = cur->_right; 
+      }
+    }
+  }
+char*Serialize(Node*root)
+{
+  if(root == NULL)
+    return "#";
+  string r = to_string(root->_val);
+  r.push_back(',');
+  char*left = Serialize(root->_left);
+  char*right = Serialize(root->_right);
+  char*ret = new char[strlen(left) + strlen(right) + r.size()];
+  strcpy(ret,r.c_str());
+  strcat(ret,left);
+  strcat(ret,right);
+  return ret;
+}
+Node*DeSerialize(char*str)
+{
+  return Decode(str);
+}
+private:
+Node*Decode(char*&str)
+{
+  if(*str == '#')
+  {
+    str++;
+    return NULL;
+  }
+  int num = 0;
+  while(*str != ',')
+  {
+    num = num*10 + ((*str++) - '0');
+  }
+  str++;
+  Node*root = new Node(num);
+  root->_left = Decode(str);
+  root->_right = Decode(str);
+  return root;
+}
 };
