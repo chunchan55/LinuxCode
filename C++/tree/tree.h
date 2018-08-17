@@ -4,6 +4,8 @@ using namespace std;
 #include<string>
 #include<string.h>
 #include<stack>
+#include<vector>
+#include<queue>
 struct TreeNode
 {
   TreeNode*_left;
@@ -67,6 +69,48 @@ class Tree
         cur = cur->_right; 
       }
     }
+  }
+  //二叉树的层序遍历
+  vector<vector<int>> LevelOrder(Node*root)
+  {
+    vector<vector<int>> tree;
+    queue<Node*>q;
+    if(root == NULL)
+      return tree;
+    Node*cur = root;
+    q.push(cur);
+    while(!q.empty())
+    {
+      int size = q.size();
+    vector<int> num;
+      while(size--)
+      {
+        Node*t = q.front();
+        q.pop();
+        num.push_back(t->_val);
+        if(t->_left)
+          q.push(t->_left);
+        if(t->_right)
+          q.push(t->_right);
+      }
+      tree.push_back(num);
+    }
+    return tree;
+  }
+  //判断二叉树是不是对称的 如果一个树是另一个的镜像，也是对称的
+  bool IsSymmetrical(Node*root)
+  {
+    return IsSymmetrical(root,root);
+  }
+  bool IsSymmetrical(Node*root1,Node*root2)
+  {
+    if(root1 == NULL && root2 == NULL)
+      return true;
+    if(root1 == NULL || root2 == NULL)
+      return false;
+    if(root1->_val != root2->_val)
+      return false;
+    return IsSymmetrical(root1->_left,root2->_right) && IsSymmetrical(root1->_right,root2->_left);
   }
 char*Serialize(Node*root)
 {
