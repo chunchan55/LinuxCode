@@ -40,11 +40,32 @@ void test3()
     cout << "true\n";
   else 
     cout << "false\n";
+  int mindepth = tree.MinDepth(tree.GetRoot());
+  cout << mindepth << endl;
+  int MaxSum = tree.MaxPathSum(tree.GetRoot());
+  cout << MaxSum << endl;
+}
+void test4()
+{
+  int arr[] = {1,2,3,'#','#',4,'#'};
+  size_t n = sizeof(arr)/sizeof(arr[0]) - 1;
+  Tree tree(arr,n,'#');
+  if(tree.IsSameTree(tree.GetRoot(),tree.GetRoot()) == true)
+    cout<<"Is Same\n";
+  else
+    cout<<"not Same\n";
+  tree.PrintbuildTree();
+}
+void test5()
+{
+
 }
 int main()
 {
   //test();
  // test2();
-  test3();
+ // test3();
+ test4();
+ 
   return 0;
 }
