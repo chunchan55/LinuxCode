@@ -1,35 +1,56 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-#include<string.h>
-#include<string>
-int Find(string str)
-{
-	int len = str.size();
-	int hashtable[1024] = {0};
-	for(int i = 0; i<len; ++i)
-	{
-		hashtable[str[i]]++;
-	}
-	for(int j = 0; j<len; j++)
-	{
-		if(hashtable[str[j]] == 1)
-		{
-			return j;
-		}
-	}
-	return -1;
+int main(){
+    int n,curSum=0,maxSum=-0x7FFFFFFF;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+        curSum+=arr[i];
+        if(curSum>maxSum){
+            maxSum=curSum;
+        }
+        if(curSum<0){
+            curSum=0;
+        }
+    }
+    cout<<maxSum<<endl;
+    return 0;
 }
-int main()
-{
-	string s;
-	cin >> s;
-	int tmp = Find(s);
-	if(tmp == -1 )
-		cout << "-1\n";
-	else
-		cout << s[tmp]<< endl;
-	return 0;
-}
+
+
+//#include<iostream>
+//using namespace std;
+//#include<string.h>
+//#include<string>
+//int Find(string str)
+//{
+//	int len = str.size();
+//	int hashtable[1024] = {0};
+//	for(int i = 0; i<len; ++i)
+//	{
+//		hashtable[str[i]]++;
+//	}
+//	for(int j = 0; j<len; j++)
+//	{
+//		if(hashtable[str[j]] == 1)
+//		{
+//			return j;
+//		}
+//	}
+//	return -1;
+//}
+//int main()
+//{
+//	string s;
+//	cin >> s;
+//	int tmp = Find(s);
+//	if(tmp == -1 )
+//		cout << "-1\n";
+//	else
+//		cout << s[tmp]<< endl;
+//	return 0;
+//}
 //相邻两个小朋友，成绩较高的比较低的多一个贴纸
 //int main()
 //{
