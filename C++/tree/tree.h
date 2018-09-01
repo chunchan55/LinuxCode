@@ -45,32 +45,32 @@ class Tree
     }
     return root;
   }
-//  Node*GetRoot()
-//  {
-//    return _root;
-//  }
-//  void PreOrder_N(Node*root)
-//  {
-//    Node*cur = root;
-//    stack<Node*>s;
-//    if(cur == NULL)
-//      return;
-//    while(cur || !s.empty())
-//    {
-//      while(cur)
-//      {
-//        cout << cur->_val << " ";
-//        s.push(cur);
-//        cur = cur->_left;
-//      }
-//      if(!s.empty())
-//      {
-//        cur = s.top();
-//        s.pop();
-//        cur = cur->_right; 
-//      }
-//    }
-//  }
+  Node*GetRoot()
+  {
+    return _root;
+  }
+  void PreOrder_N(Node*root)
+  {
+    Node*cur = root;
+    stack<Node*>s;
+    if(cur == NULL)
+      return;
+    while(cur || !s.empty())
+    {
+      while(cur)
+      {
+        cout << cur->_val << " ";
+        s.push(cur);
+        cur = cur->_left;
+      }
+      if(!s.empty())
+      {
+        cur = s.top();
+        s.pop();
+        cur = cur->_right; 
+      }
+    }
+  }
   //二叉树的层序遍历
   vector<vector<int>> LevelOrder(Node*root)
   {
