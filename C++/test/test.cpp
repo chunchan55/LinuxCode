@@ -1,46 +1,45 @@
 #include<iostream>
 using namespace std;
-#include<neti>
-int main()
+#include<vector>
+#include<algorithm>
+//求数组中连续子数组的
+int FindMaxSum(vector<int> arr)
 {
+  if(arr.empty())
+    return 0;
+  int n = arr.size();
+  vector<int> f(n,0);
+  f[0] = arr[0];
+  for(int i =1; i<n; ++i)
+  {
+    f[i] = max(f[i-1]+arr[i],arr[i]);
+  }
+  int result = f[0];
+  for(int i = 1; i<n; ++i)
+  {
+    result = max(f[i],result);
+  }
+  return result;
 }
 
-//#include<iostream>
-//using namespace std;
-//#include<vector>
-//#include<algorithm>
-////求数组中连续子数组的
-//int FindMaxSum(vector<int> arr)
-//{
-//  if(arr.empty())
-//    return 0;
-//  int n = arr.size();
-//  vector<int> f(n,0);
-//  f[0] = arr[0];
-//  for(int i = 0; i<n; ++i)
-//  {
-//    f[i] = max(f[i-1]+arr[i],arr[i]);
-//  }
-//  int result = f[0];
-//  for(int i = 1; i<n; ++i)
-//  {
-//    result = max(f[i],result);
-//  }
-//  return result;
-//}
-//
-//int main()
-//{
-//  int arr[5] = {2,-1,3,-5,4};
-//  vector<int> a;
-//  for(int i = 0; i<5; ++i)
-//  {
-//    a.push_back(arr[i]);
-//  }
-//  int res = FindMaxSum(a);
-//  cout << res << endl;
-//  return 0;
-//}
+int main()
+{
+  int n = 0;
+  cin >> n;
+  int arr[n];
+  for(int i = 0; i<n; ++i)
+  {
+    cin >> arr[i];
+  }
+  vector<int> a;
+  for(int i = 0; i<5; ++i)
+  {
+    a.push_back(arr[i]);
+  }
+  int res = FindMaxSum(a);
+  cout << res << endl;
+  return 0;
+}
 
 
 //#include <iostream>
