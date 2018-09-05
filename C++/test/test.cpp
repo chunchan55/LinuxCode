@@ -1,45 +1,85 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-#include<vector>
-#include<algorithm>
-//求数组中连续子数组的
-int FindMaxSum(vector<int> arr)
+#include<string.h>
+#include<math.h>
+#include<string>
+void ReverseWord(string&str,int l,int r);
+
+string ReverseSentence(string str)
 {
-  if(arr.empty())
-    return 0;
-  int n = arr.size();
-  vector<int> f(n,0);
-  f[0] = arr[0];
-  for(int i =1; i<n; ++i)
+  size_t size = str.size();
+  if(size == 0)
+    return "";
+  int mark = 0;
+  str += ' ';
+  for(int i = 0; i<size+1; ++i)
   {
-    f[i] = max(f[i-1]+arr[i],arr[i]);
+    if(str[i] == ' ')
+    {
+      ReverseWord(str,mark,i-1);
+      mark = i+1;
+    }
   }
-  int result = f[0];
-  for(int i = 1; i<n; ++i)
-  {
-    result = max(f[i],result);
-  }
-  return result;
+  str = str.substr(0,size);
+  ReverseWord(str,0,size-1);
+  return str;
 }
 
+void ReverseWord(string&str,int l,int r)
+{
+  while(l < r)
+  {
+    swap(str[l],str[r]);
+    ++l;
+    --r;
+  }
+}
 int main()
 {
-  int n = 0;
-  cin >> n;
-  int arr[n];
-  for(int i = 0; i<n; ++i)
-  {
-    cin >> arr[i];
-  }
-  vector<int> a;
-  for(int i = 0; i<5; ++i)
-  {
-    a.push_back(arr[i]);
-  }
-  int res = FindMaxSum(a);
-  cout << res << endl;
+  string str;
+  cin >> str;
+  string res = ReverseSentence(str);
+  cout << str.c_str() << endl;
   return 0;
 }
+//求数组中连续子数组的
+//int FindMaxSum(vector<int> arr)
+//{
+//  if(arr.empty())
+//    return 0;
+//  int n = arr.size();
+//  vector<int> f(n,0);
+//  f[0] = arr[0];
+//  for(int i =1; i<n; ++i)
+//  {
+//    f[i] = max(f[i-1]+arr[i],arr[i]);
+//  }
+//  int result = f[0];
+//  for(int i = 1; i<n; ++i)
+//  {
+//    result = max(f[i],result);
+//  }
+//  return result;
+//}
+//
+//int main()
+//{
+//  int n = 0;
+//  cin >> n;
+//  int arr[n];
+//  for(int i = 0; i<n; ++i)
+//  {
+//    cin >> arr[i];
+//  }
+//  vector<int> a;
+//  for(int i = 0; i<5; ++i)
+//  {
+//    a.push_back(arr[i]);
+//  }
+//  int res = FindMaxSum(a);
+//  cout << res << endl;
+//  return 0;
+//}
 
 
 //#include <iostream>

@@ -295,4 +295,256 @@ GET /
 [D1529552211 http_server.cc:414]Request:
 GET /image/2.jpg
 /image/2.jpg 
-[D1529552211 http_ser
+[D1529552211 http_ser[I1536021931 http_server.cc:70]ServerStart OK!
+[D1536021955 http_server.cc:414]Request:
+GET /
+/ 
+[D1536021955 http_server.cc:419]Connection:keep-alive
+[D1536021955 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021955 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021955 http_server.cc:419]Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+[D1536021955 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021955 http_server.cc:419]Upgrade-Insecure-Requests:1
+[D1536021955 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021955 http_server.cc:421]
+[D1536021955 http_server.cc:422]
+[D1536021955 http_server.cc:414]Request:
+GET /css/reset.css
+/css/reset.css 
+[D1536021955 http_server.cc:419]Connection:keep-alive
+[D1536021955 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021955 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021955 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021955 http_server.cc:419]Accept:text/css,*/*;q=0.1
+[D1536021955 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021955 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021955 http_server.cc:421]
+[D1536021955 http_server.cc:422]
+[D1536021955 http_server.cc:414]Request:
+GET /css/style.css
+/css/style.css 
+[D1536021955 http_server.cc:419]Connection:keep-alive
+[D1536021955 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021955 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021955 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021955 http_server.cc:419]Accept:text/css,*/*;q=0.1
+[D1536021955 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021955 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021955 http_server.cc:421]
+[D1536021955 http_server.cc:422]
+[D1536021955 http_server.cc:414]Request:
+GET /css/style-responsive.css
+/css/style-responsive.css 
+[D1536021955 http_server.cc:419]Connection:keep-alive
+[D1536021955 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021955 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021955 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021955 http_server.cc:419]Accept:text/css,*/*;q=0.1
+[D1536021955 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021955 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021955 http_server.cc:421]
+[D1536021955 http_server.cc:422]
+[D1536021955 http_server.cc:414]Request:
+GET /js/jquery.min.js
+/js/jquery.min.js 
+[D1536021955 http_server.cc:419]Connection:keep-alive
+[D1536021955 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021955 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021955 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021955 http_server.cc:419]Accept:*/*
+[D1536021955 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021955 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021955 http_server.cc:421]
+[D1536021955 http_server.cc:422]
+[D1536021956 http_server.cc:414]Request:
+GET /js/jquery.easing.min.js
+/js/jquery.easing.min.js 
+[D1536021956 http_server.cc:419]Connection:keep-alive
+[D1536021956 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021956 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021956 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021956 http_server.cc:419]Accept:*/*
+[D1536021956 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021956 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021956 http_server.cc:421]
+[D1536021956 http_server.cc:422]
+[D1536021956 http_server.cc:414]Request:
+GET /js/modernizr.custom.42534.js
+/js/modernizr.custom.42534.js 
+[D1536021956 http_server.cc:419]Connection:keep-alive
+[D1536021956 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021956 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021956 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021956 http_server.cc:419]Accept:*/*
+[D1536021956 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021956 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021956 http_server.cc:421]
+[D1536021956 http_server.cc:422]
+[D1536021956 http_server.cc:414]Request:
+GET /js/jquery.waitforimages.js
+/js/jquery.waitforimages.js 
+[D1536021956 http_server.cc:419]Connection:keep-alive
+[D1536021956 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021956 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021956 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021956 http_server.cc:419]Accept:*/*
+[D1536021956 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021956 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021956 http_server.cc:421]
+[D1536021956 http_server.cc:422]
+[D1536021956 http_server.cc:414]Request:
+GET /js/typed.js
+/js/typed.js 
+[D1536021956 http_server.cc:419]Connection:keep-alive
+[D1536021956 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021956 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021956 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021956 http_server.cc:419]Accept:*/*
+[D1536021956 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021956 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021956 http_server.cc:421]
+[D1536021956 http_server.cc:422]
+[D1536021956 http_server.cc:414]Request:
+GET /js/masonry.pkgd.min.js
+/js/masonry.pkgd.min.js 
+[D1536021956 http_server.cc:419]Connection:keep-alive
+[D1536021956 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021956 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021956 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021956 http_server.cc:419]Accept:*/*
+[D1536021956 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021956 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021956 http_server.cc:421]
+[D1536021956 http_server.cc:422]
+[D1536021956 http_server.cc:414]Request:
+GET /js/imagesloaded.pkgd.min.js
+/js/imagesloaded.pkgd.min.js 
+[D1536021956 http_server.cc:419]Connection:keep-alive
+[D1536021956 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021956 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021956 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021956 http_server.cc:419]Accept:*/*
+[D1536021956 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021956 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021956 http_server.cc:421]
+[D1536021956 http_server.cc:422]
+[D1536021956 http_server.cc:414]Request:
+GET /js/jquery.jkit.1.2.16.min.js
+/js/jquery.jkit.1.2.16.min.js 
+[D1536021956 http_server.cc:419]Connection:keep-alive
+[D1536021956 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021956 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021956 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021956 http_server.cc:419]Accept:*/*
+[D1536021956 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021956 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021956 http_server.cc:421]
+[D1536021956 http_server.cc:422]
+[D1536021956 http_server.cc:414]Request:
+GET /js/script.js
+/js/script.js 
+[D1536021956 http_server.cc:419]Connection:keep-alive
+[D1536021956 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021956 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021956 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021956 http_server.cc:419]Accept:*/*
+[D1536021956 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021956 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021956 http_server.cc:421]
+[D1536021956 http_server.cc:422]
+[D1536021956 http_server.cc:414]Request:
+GET /img/portfolio/1.jpg
+/img/portfolio/1.jpg 
+[D1536021956 http_server.cc:419]Connection:keep-alive
+[D1536021956 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021956 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021956 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021956 http_server.cc:419]Accept:*/*
+[D1536021956 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021956 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021956 http_server.cc:421]
+[D1536021956 http_server.cc:422]
+[D1536021956 http_server.cc:414]Request:
+GET /img/portfolio/5.jpg
+/img/portfolio/5.jpg 
+[D1536021956 http_server.cc:419]Connection:keep-alive
+[D1536021956 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021956 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021956 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021956 http_server.cc:419]Accept:*/*
+[D1536021956 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021956 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021956 http_server.cc:421]
+[D1536021956 http_server.cc:422]
+[D1536021956 http_server.cc:414]Request:
+GET /img/portfolio/2.jpg
+/img/portfolio/2.jpg 
+[D1536021956 http_server.cc:419]Connection:keep-alive
+[D1536021956 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021956 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021956 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021956 http_server.cc:419]Accept:*/*
+[D1536021956 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021956 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021956 http_server.cc:421]
+[D1536021956 http_server.cc:422]
+[D1536021957 http_server.cc:414]Request:
+GET /img/business-card-2.png
+/img/business-card-2.png 
+[D1536021957 http_server.cc:419]Connection:keep-alive
+[D1536021957 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021957 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021957 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021957 http_server.cc:419]Accept:*/*
+[D1536021957 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021957 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021957 http_server.cc:421]
+[D1536021957 http_server.cc:422]
+[D1536021958 http_server.cc:414]Request:
+GET /img/business-card.png
+/img/business-card.png 
+[D1536021958 http_server.cc:419]Connection:keep-alive
+[D1536021958 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021958 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021958 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021958 http_server.cc:419]Accept:*/*
+[D1536021958 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021958 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021958 http_server.cc:421]
+[D1536021958 http_server.cc:422]
+[D1536021960 http_server.cc:414]Request:
+GET /img/home-sidebar.jpg
+/img/home-sidebar.jpg 
+[D1536021960 http_server.cc:419]Connection:keep-alive
+[D15360terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+21960 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021960 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021960 http_server.cc:419]Referer:http://47.107.77.154:8080/
+[D1536021960 http_server.cc:419]Accept:*/*
+[D1536021960 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021960 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021960 http_server.cc:421]
+[D1536021960 http_server.cc:422]
+[D1536021962 http_server.cc:414]Request:
+GET /img/icon.png
+/img/icon.png 
+[D1536021962 http_server.cc:419]Connection:keep-alive
+[D1536021962 http_server.cc:419]Accept-Encoding:gzip, deflate
+[D1536021962 http_server.cc:419]Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+[D1536021962 http_server.cc:419]Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+[D1536021962 http_server.cc:419]User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0
+[D1536021962 http_server.cc:419]Host:47.107.77.154:8080
+[D1536021962 http_server.cc:421]
+[D1536021962 http_server.cc:422]
+[D1536022175 http_server.cc:414]Request:
+GET http://www.baidu.com/cache/global/img/gs.gif
+http://www.baidu.com/cache/global/img/gs.gif 
+[D1536022175 http_server.cc:419]If-Modified-Since:Thu, 19 Apr 2012 09:51:20 GMT
+[D1536022175 http_server.cc:419]User-Agent:Mozilla
+[D1536022175 http_server.cc:419]Host:www.baidu.com
+[D1536022175 http_server.cc:421]
+[D1536022175 http_server.cc:422]
+[E1536022175 util.hpp:123]Open file error! file_path=./wwwroothttp://www.baidu.com/cache/global/img/gs.gif
+[E1536022175 http_server.cc:240]ReadAll error! file_path=./wwwroothttp://www.baidu.com/cache/global/img/gs.gif
+[E1536022175 http_server.cc:27]ReadOneRequest error!
