@@ -1,47 +1,101 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-#include<string.h>
-#include<math.h>
-#include<string>
-void ReverseWord(string&str,int l,int r);
-
-string ReverseSentence(string str)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+ 
+//将指针p,q之间的单词反转
+void ReverseWord(char *p, char *q)
 {
-  size_t size = str.size();
-  if(size == 0)
-    return "";
-  int mark = 0;
-  str += ' ';
-  for(int i = 0; i<size+1; ++i)
-  {
-    if(str[i] == ' ')
-    {
-      ReverseWord(str,mark,i-1);
-      mark = i+1;
-    }
-  }
-  str = str.substr(0,size);
-  ReverseWord(str,0,size-1);
-  return str;
+	//中间变量
+	char temp;
+	while(p<q)
+	{
+		temp=*p;
+		*p=*q;
+		*q=temp;
+		p++;
+		q--;
+	}
 }
-
-void ReverseWord(string&str,int l,int r)
+ 
+/*功能函数*/
+void ReverseSent(char *s, char *sOut)
 {
-  while(l < r)
-  {
-    swap(str[l],str[r]);
-    ++l;
-    --r;
-  }
+	char *p=NULL;
+	char *q=NULL;
+	memcpy(sOut,s,strlen(s)+1);
+	p=q=sOut;
+	while(*q++ != '\0')
+	{
+		if (isspace(*q))
+		{
+			ReverseWord(p,q-1);
+			q++;
+			p=q;
+		}
+	}
+	//最后一个单词
+	ReverseWord(p,q-2);
+	//整个句子
+	ReverseWord(sOut,q-2);
 }
+ 
+ 
 int main()
 {
-  string str;
-  cin >> str;
-  string res = ReverseSentence(str);
-  cout << str.c_str() << endl;
-  return 0;
+	char buf[20] = "i am a girl. hah!";
+  gets(buf);
+	char p[20];
+	ReverseSent(buf,p);
+	printf("%s\n",p);
+return 0;
 }
+
+//#include <iostream>
+//using namespace std;
+//#include<string.h>
+//#include<math.h>
+//#include<string>
+//void ReverseWord(string&str,int l,int r);
+//
+//string ReverseSentence(string str)
+//{
+//  size_t size = str.size();
+//  if(size == 0)
+//    return "";
+//  int mark = 0;
+//  str += ' ';
+//  for(int i = 0; i<size+1; ++i)
+//  {
+//    if(str[i] == ' ')
+//    {
+//      ReverseWord(str,mark,i-1);
+//      mark = i+1;
+//    }
+//  }
+//  str = str.substr(0,size);
+//  ReverseWord(str,0,size-1);
+//  return str;
+//}
+//
+//void ReverseWord(string&str,int l,int r)
+//{
+//  while(l < r)
+//  {
+//    swap(str[l],str[r]);
+//    ++l;
+//    --r;
+//  }
+//}
+//int main()
+//{
+//  string str;
+//  cin >> str;
+//  string res = ReverseSentence(str);
+//  cout << str.c_str() << endl;
+//  return 0;
+//}
 //求数组中连续子数组的
 //int FindMaxSum(vector<int> arr)
 //{
